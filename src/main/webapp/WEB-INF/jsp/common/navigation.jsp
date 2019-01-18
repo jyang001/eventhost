@@ -1,7 +1,7 @@
 <nav class ="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">HomePage</a>
+            <a href="/" class="navbar-brand">HomePage</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -13,7 +13,8 @@
                 <li><a href="#">Link</a></li>
                 <c:choose>
                     <c:when test="${not logstatus}">
-                        <button type="button" class="btn btn-primary">Log In</button>
+                        <a href="/user/login" button type="button" class="btn btn-primary">Log In</a>
+                        <a href="/user/signup" button type="button" class="btn btn-primary">Sign Up</a>
                     </c:when>
 
                     <c:otherwise>
@@ -24,11 +25,9 @@
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
+                                    <li><a href="#">Info</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
+                                    <li><a href="#">Logout</a></li>
                                 </ul>
                             </div>
                         </li>

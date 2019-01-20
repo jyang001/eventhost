@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
@@ -18,11 +18,18 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    private User currentUser;
 
     @GetMapping(value="/signup")
     public String addCustomerForm(ModelMap model) {
         model.addAttribute("user", new User());
         return "user-form";
+    }
+
+    @GetMapping(value="/login")
+    public String loginForm(ModelMap model) {
+        model.addAttribute("user", new User());
+        return "login";
     }
 
     @GetMapping(value="/delete")
@@ -38,6 +45,19 @@ public class UserController {
         }
         userService.addUser(user.getFirstName(), user.getLastName(), user.getUserName(), user.getPassword(), user.getEmail());
         HomeController.loggedIn=true;
+        return"redirect:/";
+    }
+
+    @PostMapping(value="/login")
+    public String loginForm(ModelMap model, @Valid @ModelAttribute("user") User myUser) {
+        List<User> users = userService.getallUsers();
+        for (User user: users) {
+            if (user.getUserName() == myUser.getUserName() && user.getPassword() == myUser.getPassword()) {
+                currentUser = myUser;
+                HomeController.loggedIn=true;
+                return"/";
+            }
+        }
         return"/";
     }
 }

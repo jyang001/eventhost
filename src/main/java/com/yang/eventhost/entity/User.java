@@ -1,6 +1,8 @@
 package com.yang.eventhost.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="user")
@@ -12,18 +14,25 @@ public class User {
     private int id;
 
     @Column(name="first_name")
+    @Size(min=2, max=20)
+    @NotBlank
     String firstName;
 
+    @Size(min=2, max=20)
     @Column(name="last_name")
+    @NotBlank
     String lastName;
 
     @Column(name="username")
+    @NotBlank
     String userName;
 
     @Column(name="password")
+    @NotBlank
     String password;
 
     @Column(name="email")
+    @NotBlank
     String email;
 
     public User() {

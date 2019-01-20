@@ -1,6 +1,12 @@
 <%@ include file="common/header.jsp" %>
 <%@ include file="common/navigation.jsp" %>
 
+
+<head>
+    <title>EventHost: User Registration Page</title>
+    <link rel="stylesheet" href='/webjars/bootstrap/3.3.6/css/bootstrap.css'>
+</head>
+
 <body>
 <div class="container">
     <h1>User Sign Up Form</h1>
@@ -44,3 +50,5 @@
         <button type="submit" class="btn btn-success"/>Add</button>
     </form:form>
 </div>
+
+<%@ include file="common/footer.jsp" %>

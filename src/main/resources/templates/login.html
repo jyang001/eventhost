@@ -1,0 +1,45 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Eventhost: Login</title>
+        <link rel="stylesheet" href='/webjars/bootstrap/3.3.6/css/bootstrap.css'>
+    </head>
+
+    <body>
+
+        <header th:insert="fragments/navigation.html :: navigation"> </header>
+
+        <div class="container">
+
+            <a class="btn btn-warning btn-lg" href="/user/signup" th:align="center">Register</a>
+
+            <h1>SignUp Test Form</h1>
+            <form action="#" th:action="@{/}"  th:object="${post}" method="post">
+                Title<input type="text"/></td>
+                <button type="submit">Submit post</button></td>
+            </form>
+
+
+            <div th:if="${param.error}" align="center">
+                <p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
+            </div>
+
+            <form th:action="@{/user/login}" method="POST" class="form-signin">
+                <h3 class="form-signin-heading" th:text="Welcome"></h3>
+                <br/>
+
+                <input type="text" id="userName" name="userName" th:placeholder="Username"
+                       class="form-control" /> <br/>
+                <input type="password" th:placeholder="Password"
+                       id="password" name="password" class="form-control" /> <br />
+
+                <button class="btn btn-lg btn-primary btn-lg" name="Submit" value="Login" type="Submit">Login </button>
+            </form>
+        </div>
+
+        <script src='/webjars/jquery/1.9.1/jquery.min.js'></script>
+        <script src='/webjars/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+
+    </body>
+
+</html>

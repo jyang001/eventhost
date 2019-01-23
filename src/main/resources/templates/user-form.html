@@ -1,0 +1,58 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>EventHost: User Registration Page</title>
+    <link rel="stylesheet" href='/webjars/bootstrap/3.3.6/css/bootstrap.css'>
+</head>
+
+<body>
+    <header th:insert="fragments/navigation.html :: navigation"> </header>
+    <div class="container">
+        <h1>User Sign Up Form</h1>
+
+        <form th:action="@{/user/signup}" method = "post" th:object="${user}">
+            <input type = "hidden" path="id"/>
+            <fieldset class="form-group">
+                <label path="firstName">First Name</label>
+                <input path="firstName" type="text"
+                            class="form-control" required="required"/>
+                <errors path="firstName" cassClass="text-warning"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <label path="lastName">Last Name</label>
+                <input path="lastName" type="text"
+                            class="form-control" required="required"/>
+                <errors path="lastName" cssClass="text-warning"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <label path="email">Email</label>
+                <input path="email" type="text"
+                            class="form-control" required="required"/>
+                <errors path="email" cssClass="text-warning"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <label path="userName">Username</label>
+                <input path="userName" type="text"
+                            class="form-control" required="required"/>
+                <errors path="userName" cssClass="text-warning"/>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <label path="password">Password</label>
+                <input path="password" type="password"
+                            class="form-control" required="required"/>
+                <errors path="password" cssClass="text-warning"/>
+            </fieldset>
+
+            <button type="submit" class="btn btn-success"/>Sign Up</button>
+        </form>
+    </div>
+
+    <script src='/webjars/jquery/1.9.1/jquery.min.js'></script>
+    <script src='/webjars/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+</body>
+
+</html>

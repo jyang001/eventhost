@@ -1,0 +1,46 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <div th:fragment="navigation">
+        <nav class ="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="/" class="navbar-brand">HomePage</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Link</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right ml-auto">
+                        <li><a href="#">Link</a></li>
+                        <li th:if="${logstatus}">
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    My Account
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">Info</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li th:unless="${logstatus}">
+                            <a href="/user/login" button type="button" class="btn btn-success">Log In</a>
+                        </li>
+
+                        <li th:unless="${logstatus}">
+                            <a href="/user/signup" button type="button" class="btn btn-success">Sign Up</a>
+                        </li>
+
+
+
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+</html>

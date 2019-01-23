@@ -15,15 +15,13 @@ public class User {
 
     @Column(name="first_name")
     @Size(min=2, max=20)
-    @NotBlank
     String firstName;
 
     @Size(min=2, max=20)
     @Column(name="last_name")
-    @NotBlank
     String lastName;
 
-    @Column(name="username")
+    @Column(name="username", unique=true)
     @NotBlank
     String userName;
 
@@ -31,8 +29,7 @@ public class User {
     @NotBlank
     String password;
 
-    @Column(name="email")
-    @NotBlank
+    @Column(name="email", unique=true)
     String email;
 
     public User() {

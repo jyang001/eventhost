@@ -10,42 +10,61 @@
     <div class="container">
         <h1>User Sign Up Form</h1>
 
-        <form th:action="@{/user/signup}" method = "post" th:object="${user}">
-            <input type = "hidden" path="id"/>
-            <fieldset class="form-group">
-                <label path="firstName">First Name</label>
-                <input path="firstName" type="text"
-                            class="form-control" required="required"/>
-                <errors path="firstName" cassClass="text-warning"/>
-            </fieldset>
+        <form th:action="@{/user/signup}" method="post" th:object="${user}" role="form" data-toggle="validator">
+            <input type = "hidden" th:field="*{id}"/>
 
-            <fieldset class="form-group">
-                <label path="lastName">Last Name</label>
-                <input path="lastName" type="text"
-                            class="form-control" required="required"/>
-                <errors path="lastName" cssClass="text-warning"/>
-            </fieldset>
+            <div class="form-group input-group has-feedback">
+                <span class="input-group-addon">
+                     <span class="glyphicon glyphicon-font"></span>
+                 </span>
+                <input type="text" th:field="*{firstName}"
+                       placeholder="First Name" class="form-control" required />
+                <span class="glyphicon form-control-feedback"
+                      aria-hidden="true"></span>
+            </div>
 
-            <fieldset class="form-group">
-                <label path="email">Email</label>
-                <input path="email" type="text"
-                            class="form-control" required="required"/>
-                <errors path="email" cssClass="text-warning"/>
-            </fieldset>
+            <div class="form-group input-group has-feedback">
+                <span class="input-group-addon">
+                     <span class="glyphicon glyphicon-font"></span>
+                 </span>
+                <input type="text" th:field="*{lastName}"
+                     placeholder="Last Name" class="form-control" required />
+                <span class="glyphicon form-control-feedback"
+                      aria-hidden="true"></span>
+            </div>
 
-            <fieldset class="form-group">
-                <label path="userName">Username</label>
-                <input path="userName" type="text"
-                            class="form-control" required="required"/>
-                <errors path="userName" cssClass="text-warning"/>
-            </fieldset>
+            <div class="form-group input-group has-feedback">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-user"></span>
+                </span>
+                <input type="text" th:field="*{userName}"
+                       placeholder="Username" class="form-control"
+                       data-error="Username does not meet requirements" required />
+                <span class="glyphicon form-control-feedback"
+                      aria-hidden="true"></span>
+            </div>
 
-            <fieldset class="form-group">
-                <label path="password">Password</label>
-                <input path="password" type="password"
-                            class="form-control" required="required"/>
-                <errors path="password" cssClass="text-warning"/>
-            </fieldset>
+            <div class="form-group input-group has-feedback">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock"></span>
+                </span>
+                <input type="password" th:field="*{password}"
+                       placeholder="Password" class="form-control"
+                       data-error="Password does not meet requirements" required />
+                <span class="glyphicon form-control-feedback"
+                      aria-hidden="true"></span>
+            </div>
+
+            <div class="form-group input-group has-feedback">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-envelope"></span>
+                </span>
+                <input type="email" th:field="*{email}"
+                    placeholder="Email Address" class="form-control"
+                    data-error="This email address is invalid" required />
+                <span class="glyphicon form-control-feedback"
+                      aria-hidden="true"></span>
+            </div>
 
             <button type="submit" class="btn btn-success"/>Sign Up</button>
         </form>

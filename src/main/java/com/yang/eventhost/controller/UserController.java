@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -40,10 +41,17 @@ public class UserController {
 
     @PostMapping(value="/signup")
     public String addCustomerForm(ModelMap model, @Valid @ModelAttribute("user") User user, BindingResult tbr) {
+
         if (tbr.hasErrors()) {
+            System.out.println("BINDING RESULT SIGN UP ERROR");
+            List<FieldError> errors = tbr.getFieldErrors();
+            for (FieldError error : errors ) {
+                System.out.println (error.getObjectName() + " - " + error.getDefaultMessage());
+            }
             return "user-form" ;
         }
-        userService.addUser(user.getFirstName(), user.getLastName(), user.getUserName(), user.getPassword(), user.getEmail());
+
+        userService.saveUser(user);
         HomeController.loggedIn=true;
         return"redirect:/";
     }
@@ -53,11 +61,11 @@ public class UserController {
         List<User> users = userService.getallUsers();
         for (User user: users) {
             if (user.getUserName() == myUser.getUserName() && user.getPassword() == myUser.getPassword()) {
-                currentUser = myUser;
+                currentUser = user;
                 HomeController.loggedIn=true;
-                return"/";
+                return"redirect:/";
             }
         }
-        return"/";
+        return"redirect:/user/signup";
     }
 }

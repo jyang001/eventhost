@@ -13,8 +13,7 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public void addUser(String firstName, String lastName, String userName, String password, String email) {
-        User user = new User(firstName, lastName, userName, password, email);
+    public void saveUser(User user) {
         userRepository.save(user);
     }
 
@@ -24,6 +23,10 @@ public class UserService {
 
     public User getUser(Integer id) {
         return userRepository.getOne(id);
+    }
+
+    public User findbyEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     public List<User> getallUsers() {

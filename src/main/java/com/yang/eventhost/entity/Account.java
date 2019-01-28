@@ -1,46 +1,57 @@
 package com.yang.eventhost.entity;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="user")
-public class User {
+@Table(name="account")
+public class Account {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="id")
     private int id;
 
+    @Column(name="enabled")
+    private boolean enabled;
+
     @Column(name="first_name")
     @Size(min=2, max=20)
-    String firstName;
+    private String firstName;
 
     @Size(min=2, max=20)
     @Column(name="last_name")
-    String lastName;
+    private String lastName;
 
     @Column(name="username", unique=true)
     @NotBlank
-    String userName;
+    private String username;
 
     @Column(name="password")
     @NotBlank
-    String password;
+    private String password;
 
     @Column(name="email", unique=true)
-    String email;
+    @NotBlank
+    private String email;
 
-    public User() {
+    //@OneToOne(cascade=CascadeType.ALL)
+    //@JoinColumn(name="")
+    //private AccountRole accountRole;
+
+    public Account() {
+        enabled = true;
     }
 
-    public User(String firstName, String lastName, String userName, String password, String email) {
+    public Account(String firstName, String lastName, String userName, String password, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userName = userName;
+        this.username = userName;
         this.password = password;
         this.email = email;
+        this.enabled=true;
     }
 
     public int getId() {
@@ -67,12 +78,20 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUserName() {
-        return userName;
+    public boolean isActive() {
+        return enabled;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setActive(boolean active) {
+        this.enabled = active;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -95,9 +114,10 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", enabled=" + enabled +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", userName='" + userName + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 '}';

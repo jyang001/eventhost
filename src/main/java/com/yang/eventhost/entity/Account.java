@@ -37,10 +37,6 @@ public class Account {
     @NotBlank
     private String email;
 
-    //@OneToOne(cascade=CascadeType.ALL)
-    //@JoinColumn(name="")
-    //private AccountRole accountRole;
-
     public Account() {
         enabled = true;
     }

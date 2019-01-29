@@ -1,33 +1,41 @@
 package com.yang.eventhost.service;
 
-import com.yang.eventhost.repository.UserDAO;
-import com.yang.eventhost.entity.User;
+import com.yang.eventhost.entity.Account;
+import com.yang.eventhost.repository.AccountDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UserDAO userDAO;
+    private AccountDAO accountDAO;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       User user = this.userDAO.findUserAccount(username);
+       Account account = this.accountDAO.findUserAccount(username);
 
-        if(user == null) {
+        if(account == null) {
             System.out.println("User not found" + username);
             throw new UsernameNotFoundException("User " + username + "was not found in the database");
         }
 
-        System.out.println("Found User: " + user.getUsername());
+        System.out.println("Found User: " + account.getUsername());
 
-        UserDetails userDetails = (UserDetails) new User(user.getFirstName(), user.getLastName(),user.getUsername(), user.getPassword(), user.getEmail());
+        List<GrantedAuthority> userAuthorityList = new ArrayList<GrantedAuthority>();
+        GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("ROLE_USER");
+        userAuthorityList.add(grantedAuthority);
 
-        System.out.println("casted woohoo");
+        UserDetails userDetails = (UserDetails) new User(account.getUsername(), account.getPassword(), userAuthorityList);
 
         return userDetails;
     }

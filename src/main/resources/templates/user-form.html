@@ -10,7 +10,7 @@
     <div class="container">
         <h1>User Sign Up Form</h1>
 
-        <form th:action="@{/user/signup}" method="post" th:object="${user}" role="form" data-toggle="validator">
+        <form th:action="@{/user/signup}" method="post" th:object="${account}" role="form" data-toggle="validator">
             <input type = "hidden" th:field="*{id}"/>
 
             <div class="form-group input-group has-feedback">
@@ -37,7 +37,7 @@
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-user"></span>
                 </span>
-                <input type="text" th:field="*{userName}"
+                <input type="text" th:field="*{username}"
                        placeholder="Username" class="form-control"
                        data-error="Username does not meet requirements" required />
                 <span class="glyphicon form-control-feedback"

@@ -13,27 +13,15 @@
 
             <a class="btn btn-warning btn-lg" href="/user/signup" th:align="center">Register</a>
 
-            <h1>SignUp Test Form</h1>
-            <form action="#" th:action="@{/}"  th:object="${post}" method="post">
-                Title<input type="text"/></td>
-                <button type="submit">Submit post</button></td>
-            </form>
+            <h1>Login Form</h1>
 
-
-            <div th:if="${param.error}" align="center">
-                <p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
-            </div>
-
-            <form th:action="@{/user/login}" method="POST" class="form-signin">
-                <h3 class="form-signin-heading" th:text="Welcome"></h3>
-                <br/>
-
-                <input type="text" id="userName" name="userName" th:placeholder="Username"
-                       class="form-control" /> <br/>
-                <input type="password" th:placeholder="Password"
-                       id="password" name="password" class="form-control" /> <br />
-
-                <button class="btn btn-lg btn-primary btn-lg" name="Submit" value="Login" type="Submit">Login </button>
+            <p th:if="${loginError}" class="error"> Wrong user or password </p>
+            <form th:action="@{/j_spring_security_check}" method="post">
+                <label for="username">Username</label>:
+                <input type="text" id="username" name="username" autofocus="autofocus" /> <br />
+                <label for="password">Password</label>:
+                <input type="password" id="password" name="password" /> <br />
+                <input type="submit" value="Log in" />
             </form>
         </div>
 

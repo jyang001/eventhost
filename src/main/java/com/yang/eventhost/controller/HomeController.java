@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("")
 public class HomeController {
 
-    public static boolean loggedIn = false;
-
     private boolean isUserLoggedIn()
     {
         return SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails;
@@ -20,8 +18,7 @@ public class HomeController {
 
     @GetMapping(value="/")
     public String showHomePage(ModelMap model) {
-        System.out.println(isUserLoggedIn() + "YESSSS LOGGED IN");
-        if (isUserLoggedIn() || loggedIn) {
+        if (isUserLoggedIn()) {
             model.put("logstatus", true);
         }
         return "index";

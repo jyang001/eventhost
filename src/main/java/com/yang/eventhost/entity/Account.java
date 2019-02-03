@@ -37,6 +37,11 @@ public class Account {
     @NotBlank
     private String email;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH,})
+    @JoinColumn(name="group_id")
+    private Group group;
+
     public Account() {
         enabled = true;
     }
@@ -104,6 +109,22 @@ public class Account {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     @Override

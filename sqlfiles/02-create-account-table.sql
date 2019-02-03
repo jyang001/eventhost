@@ -11,9 +11,7 @@ CREATE TABLE `account` (
   `password` varchar(60) NOT NULL,
   `email` varchar(45) NOT NULL,
   `enabled` boolean,
-  PRIMARY KEY (`id`)
+  `group_id` int(11),
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`group_id`) REFERENCES `group` (`id`)
 );
-
-LOCK TABLES `account` WRITE;
-
-UNLOCK TABLES;

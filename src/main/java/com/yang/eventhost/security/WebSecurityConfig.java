@@ -37,11 +37,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers("/resources/**", "/static/**","/webjars/**","/","/user/signup").permitAll();
+		http.authorizeRequests().antMatchers("/resources/**", "/static/**","/webjars/**","/","/user/signup","/user/login").permitAll();
 
 		http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
 
-		http.authorizeRequests().and().formLogin()//
+		http.authorizeRequests().anyRequest().authenticated().and().formLogin()//
 				// Submit URL of login page.
 				.loginProcessingUrl("/j_spring_security_check") // Submit URL
 				.loginPage("/user/login")//

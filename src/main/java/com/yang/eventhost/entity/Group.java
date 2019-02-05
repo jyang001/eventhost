@@ -3,6 +3,8 @@ package com.yang.eventhost.entity;
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name="group")
 public class Group {
 
     @Column(name="id")
@@ -13,7 +15,7 @@ public class Group {
     @Column(name="name")
     private String name;
 
-    @OneToMany(fetch= FetchType.EAGER, mappedBy="account",
+    @OneToMany(fetch= FetchType.EAGER, mappedBy="group",
             cascade= {CascadeType.PERSIST, CascadeType.MERGE,
                     CascadeType.DETACH, CascadeType.REFRESH})
     private List<Account> mates;

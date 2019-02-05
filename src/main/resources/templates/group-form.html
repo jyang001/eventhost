@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Eventhost</title>
+    <link rel="stylesheet" href='/webjars/bootstrap/3.3.6/css/bootstrap.css'>
+</head>
+
+<body>
+    <header th:insert="fragments/navigation.html :: navigation"> </header>
+
+    <div class="container">
+        <h1>Group Create Form</h1>
+
+        <form th:action="@{/group/create}" method="post" th:object="${group}" role="form" data-toggle="validator">
+            <input type = "hidden" th:field="*{id}"/>
+
+            <div class="form-group input-group has-feedback">
+                <span class="input-group-addon">
+                     <span class="glyphicon glyphicon-font"></span>
+                 </span>
+                <input type="text" th:field="*{name}"
+                       placeholder="Group Name" class="form-control" required />
+                <span class="glyphicon form-control-feedback"
+                      aria-hidden="true"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success"/>Create Group</button>
+        </form>
+    </div>
+
+
+<script src='/webjars/jquery/1.9.1/jquery.min.js'></script>
+<script src='/webjars/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+
+</body>
+</html>

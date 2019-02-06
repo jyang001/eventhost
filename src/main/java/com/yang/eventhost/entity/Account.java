@@ -11,7 +11,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    private int account_id;
 
     @Column(name="enabled")
     private boolean enabled;
@@ -36,7 +36,7 @@ public class Account {
     @NotBlank
     private String email;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+    @ManyToOne(targetEntity = Group.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH,})
     @JoinColumn(name="group_id")
     private Group group;
@@ -55,11 +55,11 @@ public class Account {
     }
 
     public int getId() {
-        return id;
+        return account_id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.account_id = id;
     }
 
     public String getFirstName() {
@@ -129,7 +129,7 @@ public class Account {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + account_id +
                 ", enabled=" + enabled +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

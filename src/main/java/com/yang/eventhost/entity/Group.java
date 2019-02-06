@@ -1,18 +1,19 @@
 package com.yang.eventhost.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="group")
+@Table(name="`group`")
 public class Group {
 
-    @Column(name="id")
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name="id")
     private int id;
 
-    @Column(name="name")
+    @Column(name="`name`")
     private String name;
 
     @OneToMany(fetch= FetchType.EAGER, mappedBy="group",
@@ -21,7 +22,6 @@ public class Group {
     private List<Account> mates;
 
     public Group() {
-
     }
 
     public Group(String name) {
@@ -50,6 +50,13 @@ public class Group {
 
     public void setMates(List<Account> mates) {
         this.mates = mates;
+    }
+
+    public void addMate(Account account) {
+        if (mates == null) {
+            mates = new ArrayList<>();
+        }
+        mates.add(account);
     }
 
     @Override

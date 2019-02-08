@@ -16,8 +16,8 @@ public class Event {
     @Column(name="id")
     private int id;
 
-    @Column(name="title")
-    private String title;
+    @Column(name="name")
+    private String name;
 
     @Column(name="date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -33,11 +33,11 @@ public class Event {
             inverseJoinColumns=@JoinColumn(name="account_id"))
     private List<Account> accounts;
 
-    Event() {
+    public Event() {
     }
 
-    Event(String title, Date date) {
-        this.title = title;
+    public Event(String name, Date date) {
+        this.name = name;
         this.date = date;
     }
 
@@ -49,12 +49,12 @@ public class Event {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String title) {
+        this.name = title;
     }
 
     public Date getDate() {
@@ -92,7 +92,7 @@ public class Event {
     public String toString() {
         return "Event{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
+                ", name='" + name + '\'' +
                 ", date=" + date +
                 ", invitationCode='" + invitationCode + '\'' +
                 '}';

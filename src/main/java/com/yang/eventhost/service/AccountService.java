@@ -20,4 +20,14 @@ public class AccountService {
         accountRepository.save(account);
     }
 
+    public Account findAccountByUsername(String username) {
+        return accountRepository.findAccountByUsername(username);
+    }
+
+    public void updateAccountByEvent(Account account) {
+        Account myAccount = accountRepository.getOne(account.getId());
+        myAccount.setEvent(account.getEvent());
+        accountRepository.save(myAccount);
+    }
+
 }

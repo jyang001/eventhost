@@ -11,6 +11,5 @@ CREATE TABLE `account` (
   `password` varchar(60) NOT NULL,
   `email` varchar(45) NOT NULL,
   `enabled` boolean,
-  `group_id` int(11),
   PRIMARY KEY (`id`)
 );

@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
 
-
 @Controller
 @RequestMapping("/user")
 public class AccountController {
@@ -56,8 +55,7 @@ public class AccountController {
             return "user-form" ;
         }
         accountService.saveAccount(account);
-        //.loggedIn=true;
-        return"redirect:/";
+        return"redirect:/user/login";
     }
 
     @GetMapping(value="/logout")

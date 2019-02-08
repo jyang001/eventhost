@@ -39,10 +39,12 @@ public class Account {
     private String email;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-            CascadeType.DETACH, CascadeType.REFRESH,})
+            CascadeType.DETACH, CascadeType.REFRESH,},mappedBy = "accounts")
+    /*
     @JoinTable(name="account_event",
                 joinColumns=@JoinColumn(name="account_id"),
                 inverseJoinColumns=@JoinColumn(name="event_id"))
+    */
     private List<Event> events;
 
     public Account() {

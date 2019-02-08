@@ -3,6 +3,8 @@ package com.yang.eventhost.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="account")
@@ -11,7 +13,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="id")
-    private int account_id;
+    private int id;
 
     @Column(name="enabled")
     private boolean enabled;
@@ -36,10 +38,12 @@ public class Account {
     @NotBlank
     private String email;
 
-    @ManyToOne(targetEntity = Group.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH,})
-    @JoinColumn(name="group_id")
-    private Group group;
+    @JoinTable(name="account_event",
+                joinColumns=@JoinColumn(name="account_id"),
+                inverseJoinColumns=@JoinColumn(name="event_id"))
+    private List<Event> events;
 
     public Account() {
         enabled = true;
@@ -55,11 +59,11 @@ public class Account {
     }
 
     public int getId() {
-        return account_id;
+        return id;
     }
 
     public void setId(int id) {
-        this.account_id = id;
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -118,18 +122,25 @@ public class Account {
         this.enabled = enabled;
     }
 
-    public Group getGroup() {
-        return group;
+    public List<Event> getEvent() {
+        return events;
     }
 
-    public void setGroup(Group group) {
-        this.group = group;
+    public void setEvent(List<Event> events) {
+        this.events = events;
+    }
+
+    public void addEvent(Event event) {
+        if (events == null) {
+            events = new ArrayList<>();
+        }
+        events.add(event);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + account_id +
+                "id=" + id +
                 ", enabled=" + enabled +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

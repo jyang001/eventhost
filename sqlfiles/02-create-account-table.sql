@@ -12,6 +12,5 @@ CREATE TABLE `account` (
   `email` varchar(45) NOT NULL,
   `enabled` boolean,
   `group_id` int(11),
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`group_id`) REFERENCES `group` (`id`)
+  PRIMARY KEY (`id`)
 );

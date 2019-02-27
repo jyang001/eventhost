@@ -40,15 +40,12 @@ public class Account {
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH,},mappedBy = "accounts")
-    /*
-    @JoinTable(name="account_event",
-                joinColumns=@JoinColumn(name="account_id"),
-                inverseJoinColumns=@JoinColumn(name="event_id"))
-    */
+
     private List<Event> events;
 
     public Account() {
         enabled = true;
+        events = new ArrayList<>();
     }
 
     public Account(String firstName, String lastName, String userName, String password, String email) {
@@ -58,6 +55,7 @@ public class Account {
         this.password = password;
         this.email = email;
         this.enabled=true;
+        events = new ArrayList<>();
     }
 
     public int getId() {

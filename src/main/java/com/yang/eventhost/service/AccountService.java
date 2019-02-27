@@ -29,5 +29,4 @@ public class AccountService {
         myAccount.setEvent(account.getEvent());
         accountRepository.save(myAccount);
     }
-
 }

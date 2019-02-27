@@ -55,7 +55,8 @@ public class EventService {
         event.setInvitationCode(invitationCode);
         eventRepository.save(event);
         accountService.updateAccountByEvent(currentAccount);
-        System.out.println("---------CREATED EVENT-----");
     }
+
+
 
 }

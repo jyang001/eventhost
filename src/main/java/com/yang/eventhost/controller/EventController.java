@@ -29,6 +29,12 @@ public class EventController {
     @Autowired
     AccountService accountService;
 
+    private Account getCurrentAccount() {
+         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+         Account account = accountService.findAccountByUsername(user.getUsername());
+         return account;
+    }
+
     @GetMapping("/create")
     public String createEventForm(ModelMap model) {
         model.addAttribute("event", new Event());
@@ -44,10 +50,16 @@ public class EventController {
             }
             return "event-form";
         }
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Account account = accountService.findAccountByUsername(user.getUsername());
+        Account account = getCurrentAccount();
         eventService.createEvent(event, account);
         return "redirect:/";
+    }
+
+    @GetMapping("/list")
+    public String getEvents(ModelMap model) {
+        Account account = getCurrentAccount();
+        model.put("events", account.getEvent());
+        return "list-events";
     }
 
 }

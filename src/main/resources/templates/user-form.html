@@ -11,7 +11,7 @@
         <hr>
         <div class="card bg-light">
             <article class="card-body mx-auto" style="max-width: 400px;">
-                <h4 class="card-title mt-3 text-center">User Sign Up</h4>
+                <h4 class="card-title mt-3 text-center">Create Account</h4>
                 <p class="divider-text">
                     <span class="bg-light"></span>
                 </p>
@@ -19,12 +19,23 @@
                     <input type = "hidden" th:field="*{id}"/>
 
                     <div class="form-group input-group has-feedback">
+                        <div class="input-group-prepend"> </div>
+                        <span class="input-group-addon">
+                             <span class="fa fa-star"></span>
+                        </span>
+                        <input type="text" th:field="*{firstName}" placeholder="First Name" class="form-control" required />
+                        <span class="fa form-control-feedback" aria-hidden="true"></span>
+                    </div>
+
+                    <!--
+                    <div class="form-group input-group has-feedback">
                         <span class="input-group-addon">
                              <span class="glyphicon glyphicon-font"></span>
                          </span>
                         <input type="text" th:field="*{firstName}" placeholder="First Name" class="form-control" required />
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     </div>
+                    -->
 
                     <div class="form-group input-group has-feedback">
                         <span class="input-group-addon">

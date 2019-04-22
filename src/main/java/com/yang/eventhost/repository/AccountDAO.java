@@ -18,7 +18,6 @@ public class AccountDAO extends JdbcDaoSupport {
     }
 
     public Account findUserAccount(String userName) {
-        // Select .. from App_User u Where u.User_Name = ?
         String sql = AccountMapper.BASE_SQL + " where a.username = ? ";
 
         Object[] params = new Object[] { userName };

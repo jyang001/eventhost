@@ -37,6 +37,7 @@ public class EventController {
 
     @GetMapping("/create")
     public String createEventForm(ModelMap model) {
+        model.put("logstatus", true);
         model.addAttribute("event", new Event());
         return "event-form";
     }
@@ -57,6 +58,7 @@ public class EventController {
 
     @GetMapping("/list")
     public String getEvents(ModelMap model) {
+        model.put("logstatus", true);
         Account account = getCurrentAccount();
         model.put("events", account.getEvent());
         return "list-events";

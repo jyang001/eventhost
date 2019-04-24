@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Eventhost</title>
+    <link rel="stylesheet" href='/webjars/bootstrap/4.3.1/css/bootstrap.css'>
+    <link th:href="@{/css/list-events-style.css}" rel="stylesheet" href="/css/list-events-style.css" type="text/css">
+</head>
+
+<body>
+<header th:insert="fragments/navigation.html :: navigation"> </header>
+<
+<div class="container">
+    <h1>Enter the invitation Code to join the Event</h1>
+    <form id="addinvitationcode" method="post" th:action="@{/join}">
+        <!-- input box add -->
+        <div class="form-group">
+            <label for="invitationCode">Invitation Code</label>
+            <input id="invitationCode" name="invitationCode" type="text" class="form-control" placeholder="Invitation Code">
+        </div>
+        <br/>
+        <button th:type="submit" id="submitinvitationcodebtnid" class="btn btn-info">Join Event</button>
+    </form>
+    <!-- input field here for invitation code -->
+</div>
+
+<script src='/webjars/jquery/1.9.1/jquery.min.js'></script>
+<script src='/webjars/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+</body>
+
+</html>

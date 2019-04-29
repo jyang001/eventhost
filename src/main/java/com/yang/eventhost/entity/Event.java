@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * JDO mapped to 'event' table in the database
+ * Has a Many to Many relationship with 'account_event' table
+ */
 @Entity
 @Table(name="event")
 public class Event {

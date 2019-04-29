@@ -15,6 +15,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 /* defines more 'bean' methods
  * want to create beans to configure our security around our app
  */
+
+/**
+ * Spring Security: manages authentication, password encryption and configuration
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -23,6 +27,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Qualifier("userDetailsServiceImpl")
 	private UserDetailsServiceImpl userDetailsServiceImpl;
 
+	/**
+	 * Crates bean of 'BCryptPasswordEncoder' to use to encrypt passwords
+	 * @return BCryptPasswordEncoder object
+	 */
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -34,6 +42,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	//TODO:create own security (determine which webpages can be accessed by public and which can't)
+
+	/**
+	 * determines which routes can be accessed and also manages login
+	 */
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
 

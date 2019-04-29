@@ -6,6 +6,10 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * JDO mapped to 'account' table in the database
+ * Has a Many to Many relationship with 'account_event' table
+ */
 @Entity
 @Table(name="account")
 public class Account {
@@ -40,7 +44,6 @@ public class Account {
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH,},mappedBy = "accounts")
-
     private List<Event> events;
 
     public Account() {

@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("")
 public class HomeController {
 
+    /**
+     *
+     * @return login status of the user
+     */
     private boolean isUserLoggedIn()
     {
         return SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails;

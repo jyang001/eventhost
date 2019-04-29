@@ -11,14 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * controller tasked with users abilities to manage events
+ */
 @Controller
 @RequestMapping("/event")
 public class EventController {
@@ -35,6 +35,11 @@ public class EventController {
          return account;
     }
 
+    /**
+     * Manages creating a event
+     * @param model: used to send the Event object to the jsp
+     * @return the event-form
+     */
     @GetMapping("/create")
     public String createEventForm(ModelMap model) {
         model.put("logstatus", true);
@@ -62,6 +67,24 @@ public class EventController {
         Account account = getCurrentAccount();
         model.put("events", account.getEvent());
         return "list-events";
+    }
+
+
+    @PostMapping("/join")
+    public String joinEventPost(@ModelAttribute String invitationCode) {
+        Account account = getCurrentAccount();
+        /* Implement EventService.find Event
+         * look for event and return to list events
+         * if none found spit out none found
+         */
+        return "list-events";
+    }
+
+    //may need to modify
+    @GetMapping("/join")
+    public String joinEvent(ModelMap model) {
+        model.put("logstatus", true);
+        return "event-join";
     }
 
 }

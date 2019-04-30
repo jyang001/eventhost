@@ -2,14 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Eventhost</title>
-        <link rel="stylesheet" href='/webjars/bootstrap/4.3.1/css/bootstrap.css'>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     </head>
 
-    <body>
+    <body class="text-center" style="background-image: url('/background.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
         <header th:insert="fragments/navigation.html :: navigation"> </header>
 
-        <div class="container">
-            <h1>Default Page</h1>
+        <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+            <main role="main" class="inner cover">
+                <h1 class="display-4 pt-md-5 pt-5">Manage your big things.</h1>
+                <hr class="hr-light my-4 w-50">
+                <p class="lead">An event planner for every occasion. We won't sell your data so don't worry.</p>
+                <a href="#!" role="button" class="btn btn-outline-dark">Sign up</a>
+                <a href="#!" role="button" class="btn btn-outline-dark">Log in</a>
+            </main>
         </div>
 
         <script src='/webjars/jquery/1.9.1/jquery.min.js'></script>

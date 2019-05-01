@@ -2,18 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Eventhost</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href='/webjars/bootstrap/4.3.1/css/bootstrap.css'>
+        <link th:href="@{/css/list-events-style.css}" rel="stylesheet" href="/css/list-events-style.css" type="text/css">
     </head>
 
     <body>
         <header th:insert="fragments/navigation.html :: navigation"> </header>
 
         <div class="container">
-            <h1>Hello</h1>
-            <h2 th:each="event : ${events}" th:text="${event.name}"> </h2>
+            <div class="b5" th:each="event : ${events}">
+                <h2 th:text="${event.name}"> </h2>
+                <h2 th:text = "${event.date}"> </h2>
+                <h2 th:text = "${event.invitationCode}"> </h2>
+            </div>
         </div>
 
         <script src='/webjars/jquery/1.9.1/jquery.min.js'></script>
-        <script src='/webjars/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+        <script src='/webjars/bootstrap/4.3.1/js/bootstrap.min.js'></script>
     </body>
+
 </html>

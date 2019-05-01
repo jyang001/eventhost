@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" class="h-100">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href='/webjars/bootstrap/4.3.1/css/bootstrap.css'>
         <title>Eventhost</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     </head>
 
-    <body class="text-center h-100" style="background-image: url('assets/background.jpg');">
+    <body class="text-center h-100" style="background-image: url('/img/background.jpg');">
         <header th:insert="fragments/navigation.html :: navigation"> </header>
 
         <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
@@ -18,7 +17,7 @@
                     An event planner for every occasion. A convenient and simple way to keep up to date. <br>
                     Entrust your schedule to us. We won't sell your data so don't worry.
                 </p>
-                <img src="assets/calendar.png" class="img-fluid" alt="calendar_image">
+                <img src="/img/calendar.png" th:src="@{/img/calendar.png}" class="img-fluid" alt="image not found"/>
             </main>
             <footer class="mastfoot mt-auto"></footer>
         </div>

@@ -16,5 +16,13 @@ $ git clone https://github.com/jyang001/eventhost.git
 ```
 $ mvn spring-boot:run
 ```
+* To run with Eclipse
+```
+File -> Import -> Maven -> Existing Maven project
+```
+* To run with IntelliJ
+```
+In the main menu, choose File -> Open and select the Eventhost pom.xml and click on the Open button.
+```
 
 
